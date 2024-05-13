@@ -37,6 +37,9 @@ jobs:
   build-and-scan-image:
     runs-on: ubuntu-latest
     needs: [code-unit-testing, code-vulnerability-scanning]
+    #add this to use env secret/var
+    #     environment:
+    #       name: dev
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
@@ -57,6 +60,7 @@ jobs:
         with:
           image-ref: "${{ vars.IMAGE_NAME }}:latest"
           format: "table"
+          # exit-code: '1'
           exit-code: "0"
           ignore-unfixed: true
           vuln-type: "os,library"
@@ -71,7 +75,11 @@ jobs:
     with:
       target_env: "dev"
     secrets: inherit
-    if: ${{ github.ref_name == 'develop' || startsWith(github.ref_name, 'feature/') }}
+    if:
+      ${{ github.ref_name == 'main' || github.ref_name == 'develop' || startsWith(github.ref_name, 'feature/') }}
+      //try to remove main and see if it works
+      //remove @main see if it works, is there default?
+      //how to read var/secret from env?
 
   deploy-image-uat:
     needs: [build-and-scan-image]

@@ -6,6 +6,12 @@ on:
       target_env:
         type: environment
         description: Select the environment
+      action:
+        type: choice
+        options:
+          - create
+          - deploy
+          - destroy
   workflow_call:
     inputs:
       target_env:

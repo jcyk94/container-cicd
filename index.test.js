@@ -1,14 +1,3 @@
-const request = require("supertest");
-const app = require("./index");
-
-describe("GET /", () => {
-  it('responds with "Hello, world!"', async () => {
-    const response = await request(app).get("/");
-    expect(response.status).toBe(200);
-    expect(response.text).toBe("Hello, world!");
-  });
-});
-
 // const functions = require("./index");
 
 // // const { firsthandler } = require("./index");
@@ -48,3 +37,14 @@ describe("GET /", () => {
 //     expect(result).toEqual(expectedResponse);
 //   });
 // });
+
+const request = require("supertest");
+const app = require("./index");
+
+describe("GET /", () => {
+  it('responds with "Hello, world!"', async () => {
+    const response = await request(app).get("/");
+    expect(response.status).toBe(200);
+    expect(response.text).toBe("Hello, world!");
+  });
+});

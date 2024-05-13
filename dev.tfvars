@@ -1,0 +1,5 @@
+ecs_cluster_name     = "jolchin-ecs-cluster-dev"
+ecs_service_name     = "jolchin-ecs-service-dev"
+ecs_task_defn_family = "jolchin-ecs-task-def-dev"
+ecs_container_name   = "jolchin-container-dev"
+ecs_port_name        = "jolchin-3000-tcp-dev"
